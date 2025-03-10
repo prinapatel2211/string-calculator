@@ -27,5 +27,13 @@ RSpec.describe StringCalculator do
     it 'returns the sum of numbers separated by a custom delimiter' do
       expect(subject.add("//;\n1;2;7")).to eq(10)
     end
+
+    it 'raises an exception when negative number' do
+      expect(subject.add("-1,2,3")).to raise_error("Negative numbers not allowed: -1")
+    end
+
+    it 'raises an exception with multiple negative numbers' do
+      expect(subject.add("1,-2,-3")).to raise_error("Negative numbers not allowed: -2,-3")
+    end
   end
 end
